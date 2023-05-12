@@ -16,9 +16,12 @@ public class Main {
 
         Subtask subtask = new Subtask(epicTask.getId(), "Приготовить грузинский салат", "Орехи убрать, " +
                 "добавить больше граната");
-        manager.createSubtaskList(epicTask.getId(), subtask);
+        subtask.setEpicId(epicTask.getId());
+        manager.addSubtask(subtask);
+
         Subtask subtask1 = new Subtask(epicTask.getId(), "Испечь торт", "Три слоя, без крема");
-        manager.updateSubtasks(epicTask.getId(), subtask1);
+        subtask1.setEpicId(epicTask.getId());
+        manager.addSubtask(subtask1);
 
 
 
@@ -27,7 +30,8 @@ public class Main {
         manager.createEpicTask(epicTask2);
         Subtask subtask3 = new Subtask(epicTask2.getId(), "Купить свечи", "Нужны будут два вида: для торта " +
                 "и для освещения");
-        manager.createSubtaskList(epicTask2.getId(), subtask3);
+        subtask3.setEpicId(epicTask2.getId());
+        manager.addSubtask(subtask3);
 
 
 
@@ -46,24 +50,31 @@ public class Main {
         // Создан эпик с измененным содержанием
         EpicTask updatedEpicTask = new EpicTask("Приготовить праздничный стол", "Не забудь: у Леши аллергия " +
                 "на орехи, на гранат тоже");
+        updatedEpicTask.setId(epicTask.getId());
 
         Subtask updatedSubtask = new Subtask(epicTask.getId(), "Приготовить оливье", "Добавить побольше " +
                 "соленых огурцов");
         updatedSubtask.setStatus("IN_PROGRESS");
+        updatedSubtask.setId(subtask.getId());
+        updatedSubtask.setEpicId(epicTask.getId());
 
         Subtask updatedSubtask1 = new Subtask(epicTask.getId(), "Испечь торт", "Четыре слоя, без крема");
         updatedSubtask1.setStatus("DONE");
+        updatedSubtask1.setId(subtask1.getId());
+        updatedSubtask1.setEpicId(epicTask.getId());
+
         // Измененный эпик передан на место старого
-        manager.createSubtaskList(epicTask.getId(), updatedSubtask);
-        manager.updateSubtasks(epicTask.getId(), updatedSubtask1);
-        manager.updateEpicTask(updatedEpicTask, epicTask.getId());
+        manager.updateEpicTask(updatedEpicTask);
+        manager.updateSubtask(updatedSubtask);
+        manager.updateSubtask(updatedSubtask1);
 
 
         // Изменен таск
         Task updatedTask = new Task("Позвать Лешу на праздник", "Не забудь сказать, что приготовишь для " +
                 "него оливье и торт");
+        updatedTask.setId(task.getId());
         updatedTask.setStatus("DONE");
-        manager.updateTask(updatedTask, task.getId());
+        manager.updateTask(updatedTask);
         System.out.println(manager.getAllTasks());
 
         // Удалены один таск и один эпик
