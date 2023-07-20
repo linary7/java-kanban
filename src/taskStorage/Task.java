@@ -4,7 +4,7 @@ public class Task {
     protected String title;
     protected String text;
 
-    protected String status = "NEW";
+    protected TaskStatus status = TaskStatus.NEW;
     protected int id;
 
     public int getId() {
@@ -20,7 +20,7 @@ public class Task {
         this.text = text;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(TaskStatus status) {
         this.status = status;
     }
 
@@ -29,7 +29,7 @@ public class Task {
         return "\n" + title + "\n" + text + "\nСтатус задачи: " + status;
     }
 
-    public String getStatus() {
+    public TaskStatus getStatus() {
         return status;
     }
 }
