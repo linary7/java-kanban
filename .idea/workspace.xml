@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c50dcf61-4e75-4790-a4e3-b5232280ac5f" name="Changes" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/taskManagment/InMemoryHistoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/taskManagment/InMemoryHistoryManager.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/taskManagment/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/taskManagment/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/taskManagment/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/taskManagment/InMemoryTaskManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/taskStorage/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/taskStorage/Task.java" afterDir="false" />
+>>>>>>> d0b31832362c0a3a646486c3fd624165545fda73
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
