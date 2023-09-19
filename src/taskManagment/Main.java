@@ -51,6 +51,9 @@ public class Main {
         // Распечатан список имеющихся задач
         System.out.println(inMemoryTaskManager.getAllTasks());
 
+        System.out.println(inMemoryTaskManager.getTaskById(task1.getId()));
+        System.out.println("Просмотренные задачи:" + inMemoryTaskManager.getHistory());
+
         // Создан эпик с измененным содержанием
         EpicTask updatedEpicTask = new EpicTask("Приготовить праздничный стол", "Не забудь: у Леши аллергия " +
                 "на орехи, на гранат тоже");
@@ -67,6 +70,7 @@ public class Main {
         updatedSubtask1.setId(subtask1.getId());
         updatedSubtask1.setEpicId(epicTask.getId());
 
+
         // Измененный эпик передан на место старого
         inMemoryTaskManager.updateEpicTask(updatedEpicTask);
         inMemoryTaskManager.updateSubtask(updatedSubtask);
@@ -80,6 +84,8 @@ public class Main {
         updatedTask.setStatus(TaskStatus.DONE);
         inMemoryTaskManager.updateTask(updatedTask);
         System.out.println(inMemoryTaskManager.getAllTasks());
+
+        System.out.println("Просмотренные задачи:" + inMemoryTaskManager.getHistory());
 
         // Удалены один таск и один эпик
         inMemoryTaskManager.deleteTaskById(task1.getId());
