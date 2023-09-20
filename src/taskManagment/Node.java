@@ -4,15 +4,15 @@ package taskManagment;
 import taskStorage.Task;
 
 public class Node {
-    Task value;
-    Node next;
-    Node previous;
+    private Task value;
+    private Node next;
+    private Node previous;
 
     public Node(Task value) {
         this.value = value;
     }
 
-    public taskStorage.Task getValue() {
+    public Task getValue() {
         return value;
     }
 

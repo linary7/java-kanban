@@ -5,20 +5,21 @@ import taskStorage.Task;
 import java.util.LinkedList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class InMemoryHistoryManager implements HistoryManager{
 
-    Node first;
-    Node last;
-    HashMap<Integer, Node> taskHistory = new HashMap<>();
+    private Node first;
+    private Node last;
+    private Map<Integer, Node> taskHistory = new HashMap<>();
 
 
     @Override
     public void addTask(Task task) {
         Node node = new Node(task);
         if (first != null) {
-            last.next = node;
-            node.previous = last;
+            last.setNext(node);
+            node.setPrevious(last);
         } else {
             first = node;
         }
@@ -35,34 +36,29 @@ public class InMemoryHistoryManager implements HistoryManager{
         Node currentNode = first;
 
         while (currentNode != null){
-            if (history.contains(currentNode.getValue())) {
-                history.remove(currentNode.getValue());
-            }
             history.add(currentNode.getValue());
-            currentNode = currentNode.next;
+            currentNode = currentNode.getNext();
         }
         return history;
     }
 
     @Override
     public void remove(int id){
-        if (taskHistory.get(id) == first && first == last){
-            taskHistory.remove(id);
+        Node removedNode = taskHistory.get(id);
+        if (removedNode == first && first == last){
             first = null;
             last = null;
-        } else if (taskHistory.get(id) == first){
-            taskHistory.get(id).next.previous = null;
-            first = taskHistory.get(id).next;
-            taskHistory.remove(id);
-        } else if (taskHistory.get(id) == last) {
-            taskHistory.get(id).previous.next = null;
-            last = taskHistory.get(id).previous;
-            taskHistory.remove(id);
+        } else if (removedNode == first){
+            removedNode.getNext().setPrevious(null);
+            first = removedNode.getNext();
+        } else if (removedNode == last) {
+            removedNode.getPrevious().setNext(null);
+            last = removedNode.getPrevious();
         } else if (taskHistory.containsKey(id)){
-            taskHistory.get(id).previous.next = taskHistory.get(id).next;
-            taskHistory.get(id).next.previous = taskHistory.get(id).previous;
-            taskHistory.remove(id);
+            removedNode.getPrevious().setNext(removedNode.getNext());
+            removedNode.getNext().setPrevious(removedNode.getPrevious());
         }
+        taskHistory.remove(id);
     }
 
 }
