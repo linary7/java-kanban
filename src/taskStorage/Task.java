@@ -6,6 +6,13 @@ public class Task {
 
     protected TaskStatus status = TaskStatus.NEW;
     protected int id;
+    protected TaskType type;
+
+    public Task(String title, String text) {
+        this.title = title;
+        this.text = text;
+        this.type = TaskType.TASK;
+    }
 
     public int getId() {
         return id;
@@ -13,11 +20,6 @@ public class Task {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Task(String title, String text) {
-        this.title = title;
-        this.text = text;
     }
 
     public void setStatus(TaskStatus status) {
@@ -31,6 +33,17 @@ public class Task {
 
     public TaskStatus getStatus() {
         return status;
+    }
+
+    public String getTitle(){
+        return title;
+    }
+    public String getText(){
+        return text;
+    }
+
+    public TaskType getType(){
+        return type;
     }
 }
 

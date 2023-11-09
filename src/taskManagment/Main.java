@@ -6,7 +6,7 @@ import taskStorage.Task;
 import taskStorage.TaskStatus;
 
 public class Main {
-    public static void main(String[] args) {
+    /* public static void main(String[] args) {
 
         TaskManager inMemoryTaskManager = Managers.getDefault();
 
@@ -92,5 +92,5 @@ public class Main {
         inMemoryTaskManager.deleteEpicTaskById(epicTask2.getId());
         // Удалены все таски и эпики
         inMemoryTaskManager.removeAllTasks();
-    }
+    } */
 }
