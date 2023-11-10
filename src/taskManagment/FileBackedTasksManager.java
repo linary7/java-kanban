@@ -15,7 +15,7 @@ import java.io.File;
 public class FileBackedTasksManager extends InMemoryTaskManager {
 
     private File file;
-    FileBackedTasksManager(File file){
+    public FileBackedTasksManager(File file){
         this.file = file;
     }
 
@@ -43,9 +43,9 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
 
     }
 
-    public void save() {
+    private void save() {
        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))){
-           bufferedWriter.write(CSVFormatHandler.HEADER);
+           bufferedWriter.write(CSVFormatHandler.getHeader());
            bufferedWriter.newLine();
 
            for (Task task : taskList.values()){
@@ -64,13 +64,13 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
            }
 
            bufferedWriter.newLine();
-           bufferedWriter.write(CSVFormatHandler.historyToString(historyManager));
+           bufferedWriter.write(CSVFormatHandler.historyToString(historyManager.getHistory()));
        } catch (IOException ioe){
           throw new IllegalArgumentException("Возникла проблема обработки файла");
        }
     }
 
-    static FileBackedTasksManager loadFile(File file){
+    public static FileBackedTasksManager loadFile(File file){
         FileBackedTasksManager manager = new FileBackedTasksManager(file);
 
         String[] fileLines = String.valueOf(file).split("/n");
