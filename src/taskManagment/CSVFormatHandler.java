@@ -10,10 +10,10 @@ import java.util.List;
 public class CSVFormatHandler {
     private static final String HEADER = "id,type,name,status,description,epic";
 
-    static String toString(Task task){
+    public static String toString(Task task){
         String result = new StringBuilder().append(task.getId()).append(", ").append(task.getType()).append(", ").append(task.getTitle()).append(", ").append(task.getStatus()).append(", ").append(task.getText()).toString();
         if (task.getType() == TaskType.SUBTASK){
-            return result + ", " + ((Subtask) task).getEpicId();
+            return new StringBuilder().append(result).append(", ").append(((Subtask) task).getEpicId()).toString();
         }
         return result;
     }

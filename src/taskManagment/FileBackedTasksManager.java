@@ -14,7 +14,7 @@ import java.io.File;
 
 public class FileBackedTasksManager extends InMemoryTaskManager {
 
-    private File file;
+    final private File file;
     public FileBackedTasksManager(File file){
         this.file = file;
     }
@@ -66,7 +66,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
            bufferedWriter.newLine();
            bufferedWriter.write(CSVFormatHandler.historyToString(historyManager.getHistory()));
        } catch (IOException ioe){
-          throw new IllegalArgumentException("Возникла проблема обработки файла");
+          throw new ManagerSaveException("Возникла проблема обработки файла");
        }
     }
 
